@@ -1,0 +1,28 @@
+{% extends 'students/layout.html' %}
+{% block header %}
+    <h1>HOME</h1>
+{% endblock %}
+
+{% block body %}
+
+<h1>Welcome, {{ request.user.first_name }}</h1>
+<h2>Student Info</h2>
+<ul>
+    <li>Username: {{ request.user.username }}</li>
+    <li>First Name: {{ request.user.first_name }}</li>
+    <li>Last Name: {{ request.user.last_name }}</li>
+    <li>Email: {{ request.user.email }}</li>
+</ul>
+
+<br>
+<h2>Registered Courses</h2>
+
+<ul>
+{% for course in courses %}
+    <li><a href="{% url 'course_info' course.code %}" class="button">{{ course.code }} : {{ course.course_name }}</a></li>
+    {% empty %}
+    <li>No course</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

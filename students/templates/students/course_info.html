@@ -1,0 +1,32 @@
+{% extends "students/layout.html" %}
+
+{% block header %}
+    <h1>Course {{ course.code }}</h1>
+{% endblock %}
+
+{% block body %}
+
+<ul>
+    <li>Code: {{ course.code }}</li>
+    <li>Course Name: {{ course.course_name}}</li>
+    <li>Semester: {{ course.semester }}</li>
+    <li>Year: {{ course.year }}</li>
+    <li>Seat: {{ course.seat }}</li>
+    <li>Status: {{ course.status }}</li>
+</ul>
+
+{% if check == True %}
+    <h3>Already Enrolled</h3>
+    <form action="{% url 'cancel_enroll' course.code %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" class="button" value="cancel enroll">
+    </form>
+{% else %}
+    <h3>Not Enrolled</h3>
+    <form action="{% url 'enroll' course.code %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" class="button" value="enroll">
+    </form>
+{% endif %}
+
+{% endblock %}

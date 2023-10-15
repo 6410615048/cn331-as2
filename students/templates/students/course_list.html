@@ -1,0 +1,27 @@
+{% extends "students/layout.html" %}
+
+{% block header %}
+    <h1>Course List</h1>
+{% endblock %}
+
+{% block body %}
+<h1>Registered Course</h1>
+<ul>
+    {% for course in courses %}
+    <li><a href="{% url 'course_info' course.code %}" class="button">{{ course.code }} : {{ course.course_name }} ({{ course.seat}}) ({{ course.status}})</a></li>
+    {% empty %}
+    <li>No courses</li>
+    {% endfor %}
+</ul>
+
+<br>
+<h1>Not Registered Course</h1>
+<ul>
+    {% for course in non_courses %}
+    <li><a href="{% url 'course_info' course.code %}" class="button">{{ course.code }} : {{ course.course_name }} ({{ course.seat}}) ({{ course.status}})</a></li>
+    {% empty %}
+    <li>No courses</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
