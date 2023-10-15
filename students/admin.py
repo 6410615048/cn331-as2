@@ -5,7 +5,6 @@ class CourseAdmin(admin.ModelAdmin):
     list_display = ("code", "course_name", "seat", "status")
 
 class ProfileAdmin(admin.ModelAdmin):
-    #list_display = ('user')
     filter_horizontal = ["courses"]
     
 admin.site.register(Course, CourseAdmin)
