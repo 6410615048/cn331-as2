@@ -1,3 +1,6 @@
+Assignment 2
+https://github.com/6410615048/cn331-as2
+
 Member
 - Natchanon Chanrungrojne 6410615048
 
