@@ -30,6 +30,11 @@ class Course(models.Model):
         if self.seat > 0 :
             self.status = "OPEN"
         self.save()
+    
+    def get_student(self):
+        students = Profile.objects.filter(courses = self)
+        return students
+        
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
